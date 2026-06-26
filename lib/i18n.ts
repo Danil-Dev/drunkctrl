@@ -4,7 +4,7 @@ import { en } from "./dict/en";
 
 export const locales = ["ru", "uk", "en"] as const;
 export type Locale = (typeof locales)[number];
-export const defaultLocale: Locale = "ru";
+export const defaultLocale: Locale = "uk";
 
 // ru is the canonical shape — uk/en are typed against it (`satisfies Dict`) so a missing
 // key in a translation is a compile error.

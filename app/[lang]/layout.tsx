@@ -42,7 +42,7 @@ export async function generateMetadata({
     description: d.meta.description,
     alternates: {
       canonical: `/${lang}`,
-      languages: { ru: "/ru", uk: "/uk", en: "/en", "x-default": "/ru" },
+      languages: { ru: "/ru", uk: "/uk", en: "/en", "x-default": "/uk" },
     },
     openGraph: {
       title: d.meta.title,
@@ -50,6 +50,11 @@ export async function generateMetadata({
       url: `${SITE}/${lang}`,
       siteName: "DrunkCtrl",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: d.meta.title,
+      description: d.meta.description,
     },
     robots: { index: true, follow: true },
   };
