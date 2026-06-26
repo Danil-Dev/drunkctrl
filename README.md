@@ -10,11 +10,23 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
+## Языки (i18n)
+
+ru / uk / en. Маршруты `/(ru|uk|en)`; `/` редиректит на язык браузера (`Accept-Language`),
+выбор переключателя запоминается в cookie `NEXT_LOCALE`. Логика — `proxy.ts` (конвенция
+Next 16, бывший middleware). Переключатель — `components/LangSwitch.tsx`.
+
+- **Все тексты** — словари `lib/dict/{ru,uk,en}.ts`. `ru` — эталон формы (`Dict`), `uk`/`en`
+  типизированы под него: пропущенный ключ в переводе = ошибка компиляции. Правишь строку —
+  правь во всех трёх.
+- Добавить язык: код в `lib/i18n.ts` (`locales`) + новый словарь.
+
 ## Что и где править
 
-- **Цена / Telegram-ссылка** — константы `PRICE` и `TELEGRAM` вверху `app/page.tsx`.
-- **Тексты** — массивы `FEATURES` / `STEPS` / `FAQ` в `app/page.tsx`, заголовки секций — там же.
-- **SEO / OpenGraph** — `app/layout.tsx` (`metadata`).
+- **Цена / Telegram-ссылка** — константы `PRICE` и `TELEGRAM` вверху `app/[lang]/page.tsx`.
+- **Тексты** — словари `lib/dict/*.ts` (см. «Языки» выше).
+- **SEO / OpenGraph** — `generateMetadata` в `app/[lang]/layout.tsx` (берёт из словаря,
+  + hreflang `alternates.languages`).
 - **Бренд** — логотип-марка в `components/Mark.tsx`, favicon `app/icon.svg`, палитра в
   `tailwind.config.ts` (indigo `#4f46e5` → violet `#a855f7`, signal teal).
 
