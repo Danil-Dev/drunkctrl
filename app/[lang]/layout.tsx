@@ -50,11 +50,13 @@ export async function generateMetadata({
       url: `${SITE}/${lang}`,
       siteName: "DrunkCtrl",
       type: "website",
+      images: [{ url: "/opengraph-image.png", width: 1672, height: 941, alt: "DrunkCtrl" }],
     },
     twitter: {
       card: "summary_large_image",
       title: d.meta.title,
       description: d.meta.description,
+      images: ["/opengraph-image.png"],
     },
     robots: { index: true, follow: true },
   };
