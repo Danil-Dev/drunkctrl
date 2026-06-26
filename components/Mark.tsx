@@ -10,14 +10,23 @@ export function Mark({ size = 32 }: { size?: number }) {
       <rect width="64" height="64" rx="16" fill="url(#dcm)" />
       <rect x="0.5" y="0.5" width="63" height="63" rx="15.5" stroke="#fff" strokeOpacity="0.12" />
       <path d="M18 40 L32 23 L46 40" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+      <circle cx="46.5" cy="17" r="5" fill="#a3e635" />
     </svg>
   );
 }
 
+// Indigo → lime accent on "Ctrl" — the lime echoes the bubble dot in the mark + the DrunkFB lime.
+const CTRL_GRADIENT = {
+  backgroundImage: "linear-gradient(100deg,#818cf8,#a3e635)",
+  WebkitBackgroundClip: "text",
+  backgroundClip: "text",
+  color: "transparent",
+} as const;
+
 export function Wordmark({ className = "" }: { className?: string }) {
   return (
     <span className={`font-display font-bold tracking-tight ${className}`}>
-      Drunk<span className="text-gradient">Ctrl</span>
+      Drunk<span style={CTRL_GRADIENT}>Ctrl</span>
     </span>
   );
 }
